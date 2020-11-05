@@ -1,1 +1,1 @@
-worker:python botrdel.py
+worker: python botrdel/main.py
