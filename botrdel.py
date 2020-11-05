@@ -8,8 +8,8 @@ from tokenfile import TOKEN
 # on importe tout le nécessaire
 
 
-DISCORD_TOKEN={"Njg5NDI5Njk2MDkzMzU2MDU0.XnCwRg.l5SwJ4C09rPZyNbBJpT6CQnyeUg"}
-DISCORD_GUILD={"402063004998565910"}
+DISCORD_TOKEN={"token"}
+DISCORD_GUILD={"guild"}
 
 
 load_dotenv()
@@ -34,7 +34,7 @@ async def on_ready():
 @client.event
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot
-        if "<@!689429696093356054>" in message.content.split(): #on vérifie que le bot à été ping
+        if "<@!bot>" in message.content.split(): #on vérifie que le bot à été ping
             liste=[]
             channel = discord.utils.get(client.get_all_channels(), guild__name='Ché Mwa', name='message') #on sélectionne le channel dans lequel on va prendre les messages
             async for texte in channel.history(limit=20):
@@ -44,4 +44,4 @@ async def on_message(message): #quand un message est envoyé
             print(liste[randint(0,len(liste)-1)])
             response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
             await message.channel.send(response) #on répond
-client.run("Njg5NDI5Njk2MDkzMzU2MDU0.XnCwRg.l5SwJ4C09rPZyNbBJpT6CQnyeUg")
+client.run("token")
