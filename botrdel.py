@@ -33,7 +33,7 @@ async def on_ready():
 @client.event
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot
-        if "zizi caca" in message.content.split(): #on vérifie que le bot à été ping
+        if "zizi caca" in message.content: #on vérifie que le bot à été ping
             liste=[]
             channel = discord.utils.get(client.get_all_channels(), guild__name='Ché Mwa', name='message') #on sélectionne le channel dans lequel on va prendre les messages
             async for texte in channel.history(limit=20):
