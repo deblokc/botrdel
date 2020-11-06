@@ -4,7 +4,6 @@ import discord
 from dotenv import load_dotenv
 from discord.ext import commands
 import re
-from tokenfile import TOKEN
 # on importe tout le nécessaire
 
 
