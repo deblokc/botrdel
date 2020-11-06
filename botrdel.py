@@ -7,8 +7,8 @@ import re
 # on importe tout le nécessaire
 
 
-DISCORD_TOKEN={token}
-DISCORD_GUILD={guild}
+DISCORD_TOKEN={os.environ.get('token')}
+DISCORD_GUILD={os.environ.get('guild')}
 
 
 load_dotenv()
@@ -43,4 +43,4 @@ async def on_message(message): #quand un message est envoyé
             print(liste[randint(0,len(liste)-1)])
             response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
             await message.channel.send(response) #on répond
-client.run(token)
+client.run(os.environ.get('token'))
