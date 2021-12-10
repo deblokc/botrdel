@@ -32,7 +32,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message): #quand un message est envoyé 
-    if message.author != client.user: #on vérifie que ce n'est pas un message du bot
+    if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
+        if "QUOI" in message.content.upper():
+            quoi=message.content.upper()
+            len = strlen(quoi)
+            if quoi[len-3] = "Q" and quoi[len-2] = "U" and quoi[len-1] = "O" and quoi[len] = "I":
+                await message.channel.send("feur")
         if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
             liste=[]
             channel = discord.utils.get(client.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
