@@ -36,6 +36,7 @@ async def on_message(message): #quand un message est envoyé
         if "QUOI" in message.content.upper():
             quoi=message.content.upper()
             qlen = len(quoi)
+            print(quoi)
             if (quoi[qlen-3] or quoi[qlen-4]) == "Q" and (quoi[qlen-2] or quoi[qlen-3]) == "U" and (quoi[qlen-1] or quoi[qlen-2]) == "O" and (quoi[qlen] or quoi[qlen - 1]) == "I":
                 await message.channel.send("feur")
         if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
@@ -51,7 +52,9 @@ async def on_message(message): #quand un message est envoyé
         if client.user.mentioned_in(message) and message.mention_everyone is False:
             maybe=randint(0,1)
             if maybe==0:
+                print("non")
                 await message.channel.send("non")
             else:
+                print("oui")
                 await message.channel.send("oui")
 client.run(os.environ.get('token'))
