@@ -38,7 +38,7 @@ async def on_message(message): #quand un message est envoyé
             qlen = len(quoi)
             print(quoi)
             print(qlen)
-            print(quoi[qlen])
+            print(quoi[qlen-1])
             if (quoi[qlen-5] or quoi[qlen-4]) == "Q" and (quoi[qlen-4] or quoi[qlen-3]) == "U" and (quoi[qlen-3] or quoi[qlen-2]) == "O" and (quoi[qlen-2] or quoi[qlen - 1]) == "I":
                 await message.channel.send("feur")
         if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
