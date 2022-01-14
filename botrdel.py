@@ -33,6 +33,8 @@ async def on_ready():
 @client.event
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
+        if "MILLION" in message.content.upper():
+            await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
         if "QUOI" in message.content.upper():
             quoi=re.sub(r'[^a-zA-Z0-9]', '', message.content.upper())
             qlen = len(quoi)
