@@ -36,8 +36,11 @@ async def on_message(message): #quand un message est envoyé
         if "MILLION" in message.content.upper():
             print("MILLION")
             await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
-        if "D\'ACCORD" or "DACCORD" in message.content.upper():
+        if "D\'ACCORD" in message.content.upper():
             print("D\'ACCORD")
+            await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
+        if "DACCORD" in message.content.upper():
+            print("DACCORD")
             await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
         if "QUOI" in message.content.upper():
             quoi=re.sub(r'[^a-zA-Z0-9]', '', message.content.upper())
