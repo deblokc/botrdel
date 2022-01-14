@@ -33,8 +33,6 @@ async def on_ready():
 @client.event
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
-        if "TIENS TIENS TIENS" in message.content.upper():
-            await message.channel.send("https://tenor.com/view/tiens-tiens-tiens-tiens-booba-gif-14460561")
         if "MILLION" in message.content.upper():
             print("MILLION")
             await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
