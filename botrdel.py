@@ -34,11 +34,8 @@ async def on_ready():
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
         if "QUOI" in message.content.upper():
-            quoi=message.content.upper()
+            quoi=re.sub(r'[^a-zA-Z0-9]', '', message.content.upper())
             qlen = len(quoi)
-            print(quoi)
-            print(qlen)
-            print(quoi[qlen-1],quoi[qlen-2],quoi[qlen-3],quoi[qlen-4])
             if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
                 print("feur")
                 await message.channel.send("feur")
