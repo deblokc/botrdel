@@ -66,4 +66,19 @@ async def on_message(message): #quand un message est envoyé
             else:
                 print("oui")
                 await message.channel.send("oui")
+        if message.author.id == 505682488694145035 or message.author.id == 513429177433849867: #505682488694145035 id bbq, 513429177433849867 id youyou
+            global Cooldown
+            if (Cooldown == 0):
+                bbq, youyou = 0
+                async for msg in message.channel.history(limit=10):
+                    if (msg.author.id == 505682488694145035):
+                        bbq+=1
+                    if (msg.author.id == 513429177433849867):
+                        youyou+=1
+                if (bbq >= 2 and youyou >= 2):
+                    print("Vos gueules")
+                    Cooldown = 50
+                    await message.channel.send("https://tenor.com/view/jdg-harry-potter-albus-humblebundledor-humblebundledor-shut-up-gif-17560366")
+            elif (Cooldown > 0):
+                Cooldown -=1
 client.run(os.environ.get('token'))
