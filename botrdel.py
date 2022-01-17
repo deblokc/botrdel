@@ -48,6 +48,10 @@ async def on_message(message): #quand un message est envoyé
             if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
                 print("feur")
                 await message.channel.send("feur")
+        if "BITE" in message.content.upper():
+            print("BITE")
+            bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?"] #Liste des réponses à bite
+            await message.channel.send(bite[randint(0, len(bite) - 1)])
         if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
             liste=[]
             channel = discord.utils.get(client.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
