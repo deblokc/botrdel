@@ -36,7 +36,8 @@ async def on_message(message): #quand un message est envoyé
         if len(message.content) > 4 and message.content[1:4] == "an " and (message.content[0] == 'P' or message.content[0] == 'p'):
             for mention in message.mentions:
                 if mention.id == 324482824990359552:
-                    await message.channel.send("la balle à rebondit, effrayé par le charisme époustouflant de notre Suprême Leader, et s'est logé droit entre les deux yeux du traître qui l'a attaqué")
+                    await message.channel.send("la balle a rebondit, effrayée par le charisme époustouflant de notre Suprême Leader, et s'est logée droit entre les deux yeux du traître qui l'a attaqué")
+                    return
             print("PAN !")
             l = [", en plein dans le mille.", ", ça l'a touché.", ", headshot.", ", mais ça a raté.", ", mais il se tire dans le pied."] #Fin de phrase
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
