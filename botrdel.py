@@ -79,7 +79,8 @@ async def on_message(message): #quand un message est envoyé
         if message.author.id == 505682488694145035 or message.author.id == 513429177433849867: #505682488694145035 id bbq, 513429177433849867 id youyou
             global Cooldown
             if (Cooldown == 0):
-                bbq, youyou = 0
+                bbq = 0
+                youyou = 0
                 async for msg in message.channel.history(limit=10):
                     if (msg.author.id == 505682488694145035):
                         bbq+=1
