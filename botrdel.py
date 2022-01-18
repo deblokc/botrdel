@@ -9,7 +9,7 @@ import re
 
 DISCORD_TOKEN={os.environ.get('token')}
 DISCORD_GUILD={os.environ.get('guild')}
-
+Cooldown = 0
 
 load_dotenv()
 GUILD = os.getenv('DISCORD_GUILD')
