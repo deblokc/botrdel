@@ -33,11 +33,16 @@ async def on_ready():
 @client.event
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
-        if len(message.content) > 4 and message.content[1:3] == "an " and (message.content[0] == 'P' or message.content[0] == 'p'): #Quand le premier mot est la commande pan et suivi d'une cible
-            print("PAN !")
-            l = [", en plein dans le mille.", ", ça l'a touché.", ", headshot.", ", mais ça a raté.", ", mais il se tire dans le pied."] #Fin de phrase
-            response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
-            await message.channel.send(response)
+        if len(message.content) > 4 :
+            print(1)
+            if message.content[1:3] == "an ":
+                print(2)
+                if (message.content[0] == 'P' or message.content[0] == 'p'): #Quand le premier mot est la commande pan et suivi d'une cible
+                    print(3)
+                    print("PAN !")
+                    l = [", en plein dans le mille.", ", ça l'a touché.", ", headshot.", ", mais ça a raté.", ", mais il se tire dans le pied."] #Fin de phrase
+                    response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
+                    await message.channel.send(response)
         else:
             if "MILLION" in message.content.upper():
                 print("MILLION")
