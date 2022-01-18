@@ -86,7 +86,7 @@ async def on_message(message): #quand un message est envoyé
                         bbq+=1
                     if (msg.author.id == 513429177433849867):
                         youyou+=1
-                if (bbq >= 2 and youyou >= 2):
+                if (bbq >= 3 and youyou >= 3):
                     print("Vos gueules")
                     Cooldown = 50
                     await message.channel.send("https://tenor.com/view/jdg-harry-potter-albus-humblebundledor-humblebundledor-shut-up-gif-17560366")
