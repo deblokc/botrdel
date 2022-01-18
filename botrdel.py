@@ -35,7 +35,7 @@ async def on_message(message): #quand un message est envoyé
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
         if len(message.content) > 4 and message.content[1:4] == "an " and (message.content[0] == 'P' or message.content[0] == 'p'):
             for mention in message.mentions:
-                if mention.id == 324482824990359552:
+                if mention.id == 214463495415005184:
                     await message.channel.send("la balle a rebondit, effrayée par le charisme époustouflant de notre Suprême Leader, et s'est logée droit entre les deux yeux du traître qui l'a attaqué")
                     return
             print("PAN !")
