@@ -35,7 +35,7 @@ async def on_message(message): #quand un message est envoyé
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
         if len(message.content) > 4 :
             print(1)
-            if message.content[1:3] == "an ":
+            if message.content[1:4] == "an ":
                 print(2)
                 if (message.content[0] == 'P' or message.content[0] == 'p'): #Quand le premier mot est la commande pan et suivi d'une cible
                     print(3)
