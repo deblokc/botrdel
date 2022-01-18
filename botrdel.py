@@ -34,8 +34,8 @@ async def on_ready():
 async def on_message(message): #quand un message est envoyé 
     if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
         if len(message.content) > 4 and message.content[1:4] == "an " and (message.content[0] == 'P' or message.content[0] == 'p'):
-            if 324482824990359552 in message.mentions:
-                print("test")
+            for mention in message.mentions:
+                print(mention)
             print("PAN !")
             l = [", en plein dans le mille.", ", ça l'a touché.", ", headshot.", ", mais ça a raté.", ", mais il se tire dans le pied."] #Fin de phrase
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
