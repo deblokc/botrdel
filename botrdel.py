@@ -6,6 +6,10 @@ from discord.ext import commands
 import re
 # on importe tout le nécessaire
 
+intents = discord.Intents.default()
+intents.members = True 
+
+client = commands.Bot(command_prefix=".", intents=intents)
 
 DISCORD_TOKEN={os.environ.get('token')}
 DISCORD_GUILD={os.environ.get('guild')}
