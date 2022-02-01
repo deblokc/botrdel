@@ -33,7 +33,7 @@ async def on_ready():
 @client.event
 async def on_member_remove(member):
     print("left but dont care")
-    channel = client.get_channel(402063004998565912)
+    channel = client.get_channel(374612722849021962)
     await channel.send("https://tenor.com/view/oh-no-top-gear-jeremy-clarkson-no-one-cares-gif-18925814")
 
 
