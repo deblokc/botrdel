@@ -28,6 +28,9 @@ async def on_ready():
     )
 
  # on lance le bot
+@client.event
+async def on_member_leave(member):
+    await message.channel.send(https://tenor.com/view/oh-no-top-gear-jeremy-clarkson-no-one-cares-gif-18925814)
 
 
 @client.event
