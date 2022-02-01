@@ -9,8 +9,6 @@ import re
 intents = discord.Intents.default()
 intents.members = True 
 
-client = commands.Bot(command_prefix=".", intents=intents)
-
 DISCORD_TOKEN={os.environ.get('token')}
 DISCORD_GUILD={os.environ.get('guild')}
 Cooldown = 0
@@ -18,7 +16,7 @@ Cooldown = 0
 load_dotenv()
 GUILD = os.getenv('DISCORD_GUILD')
 
-client = discord.Client()
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
