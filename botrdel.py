@@ -51,7 +51,7 @@ async def on_message(message): #quand un message est envoyé
             await message.channel.send(response)
         else:
             if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
-                await message.channel.send("sossiété"):
+                await message.channel.send("sossiété")
             if "MILLION" in message.content.upper():
                 print("MILLION")
                 await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
