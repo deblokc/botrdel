@@ -30,7 +30,7 @@ async def on_ready():
         f'{guild.name}(id: {guild.id})'
     )
     channel = discord.utils.get(client.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
-    async for texte in channel.history(limit=500):
+    async for texte in channel.history(limit=1000):
         if texte.author != client.user:
             liste.append(texte.content) #on ajoute les messages à la liste
     print(liste)
