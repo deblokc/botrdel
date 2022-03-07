@@ -17,6 +17,7 @@ load_dotenv()
 GUILD = os.getenv('DISCORD_GUILD')
 
 client = discord.Client(intents=intents)
+liste = []
 
 @client.event
 async def on_ready():
@@ -28,6 +29,11 @@ async def on_ready():
         f'{client.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
+    channel = discord.utils.get(client.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
+    async for texte in channel.history(limit=500):
+        if texte.author != client.user:
+            liste.append(texte.content) #on ajoute les messages à la liste
+    print(liste)
 
  # on lance le bot
 @client.event
@@ -72,12 +78,6 @@ async def on_message(message): #quand un message est envoyé
                 bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?"] #Liste des réponses à bite
                 await message.channel.send(bite[randint(0, len(bite) - 1)])
             if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
-                liste=[]
-                channel = discord.utils.get(client.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
-                async for texte in channel.history(limit=500):
-                    if texte.author != client.user:
-                        liste.append(texte.content) #on ajoute les messages à la liste
-                print(liste)
                 response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
                 print(response)
                 await message.channel.send(response) #on répond
