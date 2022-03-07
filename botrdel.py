@@ -78,8 +78,8 @@ async def on_message(message): #quand un message est envoyé
                     if texte.author != client.user:
                         liste.append(texte.content) #on ajoute les messages à la liste
                 print(liste)
-                print(liste[randint(0,len(liste)-1)])
                 response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
+                print(response)
                 await message.channel.send(response) #on répond
             if client.user.mentioned_in(message) and message.mention_everyone is False:
                 maybe=randint(0,1)
