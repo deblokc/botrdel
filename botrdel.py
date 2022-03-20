@@ -74,7 +74,10 @@ async def on_message(message): #quand un message est envoyé
                 tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=' + lien)
                 decode = json.loads(tmp.content.decode('utf-8'))
                 data = decode[0]
-                await message.channel.send(data["location"])
+                if (data["location"] == None):
+                    await message.channel.send(lien + " n'est pas log !")
+                else:
+                    await message.channel.send(data["location"])
             if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
                 await message.channel.send("sossiété")
             if "MILLION" in message.content.upper():
