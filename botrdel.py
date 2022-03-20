@@ -17,8 +17,8 @@ import re
 
 intents = discord.Intents.default()
 intents.members = True 
-client_id={os.environ.get('client_UID')}
-client_secret={os.environ.get('SECRET')}
+client_id=os.environ.get('client_UID')
+client_secret=os.environ.get('SECRET')
 DISCORD_TOKEN={os.environ.get('token')}
 DISCORD_GUILD={os.environ.get('guild')}
 Cooldown = 0
