@@ -23,43 +23,43 @@ DISCORD_TOKEN={os.environ.get('token')}
 DISCORD_GUILD={os.environ.get('guild')}
 Cooldown = 0
 
-api_client = BackendApplicationClient(client_id=client_id)
-api = OAuth2Session(api_client=api_client)
+client = BackendApplicationClient(client_id=client_id)
+api = OAuth2Session(client=client)
 token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
 
 load_dotenv()
 GUILD = os.getenv('DISCORD_GUILD')
 
-client = discord.Client(intents=intents)
+discordclient = discord.Client(intents=intents)
 liste = []
 
-@client.event
+@discordclient.event
 async def on_ready():
-    for guild in client.guilds:
+    for guild in discordclient.guilds:
         if guild.name == GUILD:
             break
 
     print(
-        f'{client.user} is connected to the following guild:\n'
+        f'{discordclient.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
-    channel = discord.utils.get(client.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
+    channel = discord.utils.get(discordclient.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages
     async for texte in channel.history(limit=1000):
-        if texte.author != client.user:
+        if texte.author != discordclient.user:
             liste.append(texte.content) #on ajoute les messages à la liste
     print(liste)
 
  # on lance le bot
-@client.event
+@discordclient.event
 async def on_member_remove(member):
     print("left but dont care")
-    channel = client.get_channel(374612722849021962)
+    channel = discordclient.get_channel(374612722849021962)
     await channel.send("https://tenor.com/view/oh-no-top-gear-jeremy-clarkson-no-one-cares-gif-18925814")
 
 
-@client.event
+@discordclient.event
 async def on_message(message): #quand un message est envoyé 
-    if message.author != client.user: #on vérifie que ce n'est pas un message du bot*
+    if message.author != discordclient.user: #on vérifie que ce n'est pas un message du bot*
         if len(message.content) > 4 and message.content[1:4] == "an " and (message.content[0] == 'P' or message.content[0] == 'p'):
             for mention in message.mentions:
                 if mention.id == 214463495415005184:
@@ -95,7 +95,7 @@ async def on_message(message): #quand un message est envoyé
                 response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
                 print(response)
                 await message.channel.send(response) #on répond
-            if client.user.mentioned_in(message) and message.mention_everyone is False:
+            if discordclient.user.mentioned_in(message) and message.mention_everyone is False:
                 maybe=randint(0,1)
                 if maybe==0:
                     print("non")
@@ -119,4 +119,4 @@ async def on_message(message): #quand un message est envoyé
                     await message.channel.send("https://tenor.com/view/jdg-harry-potter-albus-humblebundledor-humblebundledor-shut-up-gif-17560366")
             elif (Cooldown > 0):
                 Cooldown -=1
-client.run(os.environ.get('token'))
+discordclient.run(os.environ.get('token'))
