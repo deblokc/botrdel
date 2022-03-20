@@ -25,7 +25,7 @@ Cooldown = 0
 
 client = BackendApplicationClient(client_id=client_id)
 api = OAuth2Session(client=client)
-token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
+api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
 
 load_dotenv()
 GUILD = os.getenv('DISCORD_GUILD')
@@ -47,7 +47,6 @@ async def on_ready():
     async for texte in channel.history(limit=1000):
         if texte.author != discordclient.user:
             liste.append(texte.content) #on ajoute les messages à la liste
-    print(liste)
 
  # on lance le bot
 @discordclient.event
