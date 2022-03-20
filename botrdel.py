@@ -80,7 +80,7 @@ async def on_message(message): #quand un message est envoyé
                     if (data["location"] == None):
                         await message.channel.send(lien + " n'est pas log !")
                     else:
-                        await message.channel.send(data["location"])
+                        await message.channel.send(lien + " est log en " + data["location"])
             if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
                 await message.channel.send("sossiété")
             if "MILLION" in message.content.upper():
