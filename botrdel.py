@@ -69,7 +69,7 @@ async def on_message(message): #quand un message est envoyé
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
             await message.channel.send(response)
         else:
-            if ("whereis" in message.content):
+            if "whereis" in message.content.lower():
                 lien = message.content[8:]
                 tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=' + lien)
                 decode = json.loads(tmp.content.decode('utf-8'))
