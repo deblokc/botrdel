@@ -3,15 +3,29 @@ from random import *
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
+from requests_oauthlib import OAuth2Session
+from oauthlib.oauth2 import BackendApplicationClient
+from pygments import highlight, lexers, formatters
+import ast
+import sys
+import json
+import time
+import readline
+from builtins import input
 import re
 # on importe tout le nécessaire
 
 intents = discord.Intents.default()
 intents.members = True 
-
+client_id={os.environ.get('UID')}
+client_secret={os.environ.get('SECRET')}
 DISCORD_TOKEN={os.environ.get('token')}
 DISCORD_GUILD={os.environ.get('guild')}
 Cooldown = 0
+
+api_client = BackendApplicationClient(client_id=client_id)
+api = OAuth2Session(api_client=api_client)
+token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
 
 load_dotenv()
 GUILD = os.getenv('DISCORD_GUILD')
