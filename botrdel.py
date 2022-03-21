@@ -66,6 +66,22 @@ async def on_message(message): #quand un message est envoyé
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
             await message.channel.send(response)
         else:
+            if "whoishere" in message.content.lower():
+                client = BackendApplicationClient(client_id=client_id)
+                api = OAuth2Session(client=client)
+                api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
+                tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha')
+                decode = json.loads(tmp.content.decode('utf-8'))
+                i = 0;
+                ret = ""
+                while (i < len(decode)):
+                    if (decode[i]["location"] != None):
+                        ret += (decode[i]["login"] + " est en " + decode[i]["location"] + '\n')
+                    i++
+                if ret:
+                    await message.channel.send(ret)
+                else:
+                    await message.channel.send("Il n'y a personne ! trop trop Sadge !")
             if "whereis" in message.content.lower():
                 client = BackendApplicationClient(client_id=client_id)
                 api = OAuth2Session(client=client)
