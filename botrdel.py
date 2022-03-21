@@ -76,7 +76,7 @@ async def on_message(message): #quand un message est envoyé
                 ret = ""
                 while (i < len(decode)):
                     if (decode[i]["location"] != None):
-                        ret += (decode[i]["login"] + " est en " + decode[i]["location"] + '\n')
+                        ret += (decode[i]["first_name"] + " est en " + decode[i]["location"] + '\n')
                     i += 1
                 if ret:
                     await message.channel.send(ret)
