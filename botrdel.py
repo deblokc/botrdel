@@ -66,36 +66,40 @@ async def school_API(message):
                ret += (decode[i]["first_name"] + " est en " + decode[i]["location"] + '\n')
         i += 1
         if ret:
+            return ret
             await message.channel.send(ret)
         else:
+            return "Il n'y a personne ! trop trop Sadge !"
             await message.channel.send("Il n'y a personne ! trop trop Sadge !")
 
 async def Check_msg(message):
+    ret = ""
     if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
-        await message.channel.send("sossiété")
+        ret += "sossiété\n"
     if "MILLION" in message.content.upper():
         print("MILLION")
-        await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
+        ret += "https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749\n"
     if "D\'ACCORD" in message.content.upper():
         print("D\'ACCORD")
-        await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
+        ret += "https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283\n"
     if "DACCORD" in message.content.upper():
         print("DACCORD")
-        await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
+        ret += "https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283\n"
     if "QUOI" in message.content.upper():
         quoi=re.sub(r'[^a-zA-Z0-9]', '', message.content.upper())
         qlen = len(quoi)
         if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
             print("feur")
-            await message.channel.send("feur")
+            ret += "feur\n"
     if "BITE" in message.content.upper():
         print("BITE")
         bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?"] #Liste des réponses à bite
-        await message.channel.send(bite[randint(0, len(bite) - 1)])
+        ret += bite[randint(0, len(bite) - 1)] + '\n'
     if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
         response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
         print(response)
-        await message.channel.send(response) #on répond
+        ret += response + '\n' #on répond
+    return ret
 
 @discordclient.event
 async def on_message(message): #quand un message est envoyé 
@@ -110,9 +114,12 @@ async def on_message(message): #quand un message est envoyé
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
             await message.channel.send(response)
         else:
-            school_API(message)
-            Check_msg(message)
-
+            ret = school_API(ret)
+            if ret:
+                await message.channel.send(ret)
+            ret = Check_msg(message)
+            if ret:
+                await message.channel.send(ret)
             if discordclient.user.mentioned_in(message) and message.mention_everyone is False:
                 maybe=randint(0,1)
                 if maybe==0:
