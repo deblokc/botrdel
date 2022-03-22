@@ -52,7 +52,7 @@ async def on_member_remove(member):
     channel = discordclient.get_channel(374612722849021962)
     await channel.send("https://tenor.com/view/oh-no-top-gear-jeremy-clarkson-no-one-cares-gif-18925814")
 
-async def school_API(message):
+def school_API(message):
     ret = ""
     if "whereis" in message.content.lower():
         client = BackendApplicationClient(client_id=client_id)
@@ -86,7 +86,7 @@ async def school_API(message):
             return "Il n'y a personne ! trop trop Sadge !"
         return ret
 
-async def Check_msg(message):
+def Check_msg(message):
     ret = ""
     if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
         ret += "sossiété\n"
