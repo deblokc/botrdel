@@ -79,7 +79,7 @@ def school_API(message):
         while (i < len(decode)):
             if (decode[i]["location"] != None):
                ret += (decode[i]["first_name"] + " est en " + decode[i]["location"] + '\n')
-        i += 1
+             i += 1
         if ret:
             return ret
         else:
