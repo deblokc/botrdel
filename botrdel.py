@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import os
 from random import *
 import discord
@@ -52,27 +53,41 @@ async def on_member_remove(member):
     channel = discordclient.get_channel(374612722849021962)
     await channel.send("https://tenor.com/view/oh-no-top-gear-jeremy-clarkson-no-one-cares-gif-18925814")
 
-async def school_API(message):
-    if "whoishere" in message.content.lower():
+def school_API(message):
+    ret = ""
+    if "whereis" in message.content.lower():
+        client = BackendApplicationClient(client_id=client_id)
+        api = OAuth2Session(client=client)
+        api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
+        lien = message.content.lower()[8:]
+        tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=' + lien)
+        decode = json.loads(tmp.content.decode('utf-8'))
+        if not decode:
+            return (lien + " n'existe pas !")
+        else:
+            data = decode[0]
+            if (data["location"] == None):
+                return (lien + " n'est pas log !")
+            else:
+                return (lien + " est log en " + data["location"])
+    elif "whoishere" in message.content.lower():
         client = BackendApplicationClient(client_id=client_id)
         api = OAuth2Session(client=client)
         api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
         tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha')
         decode = json.loads(tmp.content.decode('utf-8'))
         i = 0;
-        ret = ""
         while (i < len(decode)):
             if (decode[i]["location"] != None):
                ret += (decode[i]["first_name"] + " est en " + decode[i]["location"] + '\n')
         i += 1
         if ret:
             return ret
-            await message.channel.send(ret)
         else:
             return "Il n'y a personne ! trop trop Sadge !"
-            await message.channel.send("Il n'y a personne ! trop trop Sadge !")
+        return ret
 
-async def Check_msg(message):
+def Check_msg(message):
     ret = ""
     if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
         ret += "sossiété\n"
