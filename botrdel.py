@@ -52,6 +52,50 @@ async def on_member_remove(member):
     channel = discordclient.get_channel(374612722849021962)
     await channel.send("https://tenor.com/view/oh-no-top-gear-jeremy-clarkson-no-one-cares-gif-18925814")
 
+async def school_API(message):
+    if "whoishere" in message.content.lower():
+        client = BackendApplicationClient(client_id=client_id)
+        api = OAuth2Session(client=client)
+        api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
+        tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha')
+        decode = json.loads(tmp.content.decode('utf-8'))
+        i = 0;
+        ret = ""
+        while (i < len(decode)):
+            if (decode[i]["location"] != None):
+               ret += (decode[i]["first_name"] + " est en " + decode[i]["location"] + '\n')
+        i += 1
+        if ret:
+            await message.channel.send(ret)
+        else:
+            await message.channel.send("Il n'y a personne ! trop trop Sadge !")
+
+async def Check_msg(message):
+    if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
+        await message.channel.send("sossiété")
+    if "MILLION" in message.content.upper():
+        print("MILLION")
+        await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
+    if "D\'ACCORD" in message.content.upper():
+        print("D\'ACCORD")
+        await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
+    if "DACCORD" in message.content.upper():
+        print("DACCORD")
+        await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
+    if "QUOI" in message.content.upper():
+        quoi=re.sub(r'[^a-zA-Z0-9]', '', message.content.upper())
+        qlen = len(quoi)
+        if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
+            print("feur")
+            await message.channel.send("feur")
+    if "BITE" in message.content.upper():
+        print("BITE")
+        bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?"] #Liste des réponses à bite
+        await message.channel.send(bite[randint(0, len(bite) - 1)])
+    if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
+        response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
+        print(response)
+        await message.channel.send(response) #on répond
 
 @discordclient.event
 async def on_message(message): #quand un message est envoyé 
@@ -66,62 +110,9 @@ async def on_message(message): #quand un message est envoyé
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
             await message.channel.send(response)
         else:
-            if "whoishere" in message.content.lower():
-                client = BackendApplicationClient(client_id=client_id)
-                api = OAuth2Session(client=client)
-                api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
-                tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha')
-                decode = json.loads(tmp.content.decode('utf-8'))
-                i = 0;
-                ret = ""
-                while (i < len(decode)):
-                    if (decode[i]["location"] != None):
-                        ret += (decode[i]["first_name"] + " est en " + decode[i]["location"] + '\n')
-                    i += 1
-                if ret:
-                    await message.channel.send(ret)
-                else:
-                    await message.channel.send("Il n'y a personne ! trop trop Sadge !")
-            if "whereis" in message.content.lower():
-                client = BackendApplicationClient(client_id=client_id)
-                api = OAuth2Session(client=client)
-                api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
-                lien = message.content.lower()[8:]
-                tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=' + lien)
-                decode = json.loads(tmp.content.decode('utf-8'))
-                if not decode:
-                    await message.channel.send(lien + " n'existe pas !")
-                else:
-                    data = decode[0]
-                    if (data["location"] == None):
-                        await message.channel.send(lien + " n'est pas log !")
-                    else:
-                        await message.channel.send(lien + " est log en " + data["location"])
-            if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
-                await message.channel.send("sossiété")
-            if "MILLION" in message.content.upper():
-                print("MILLION")
-                await message.channel.send("https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749")
-            if "D\'ACCORD" in message.content.upper():
-                print("D\'ACCORD")
-                await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
-            if "DACCORD" in message.content.upper():
-                print("DACCORD")
-                await message.channel.send("https://tenor.com/view/asterix-vinalti-daccord-sure-ok-gif-15819283")
-            if "QUOI" in message.content.upper():
-                quoi=re.sub(r'[^a-zA-Z0-9]', '', message.content.upper())
-                qlen = len(quoi)
-                if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
-                    print("feur")
-                    await message.channel.send("feur")
-            if "BITE" in message.content.upper():
-                print("BITE")
-                bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?"] #Liste des réponses à bite
-                await message.channel.send(bite[randint(0, len(bite) - 1)])
-            if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
-                response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
-                print(response)
-                await message.channel.send(response) #on répond
+            school_API(message)
+            Check_msg(message)
+
             if discordclient.user.mentioned_in(message) and message.mention_everyone is False:
                 maybe=randint(0,1)
                 if maybe==0:
@@ -130,20 +121,4 @@ async def on_message(message): #quand un message est envoyé
                 else:
                     print("oui")
                     await message.channel.send("oui")
-        if message.author.id == 505682488694145035 or message.author.id == 513429177433849867: #505682488694145035 id bbq, 513429177433849867 id youyou
-            global Cooldown
-            if (Cooldown == 0):
-                bbq = 0
-                youyou = 0
-                async for msg in message.channel.history(limit=10):
-                    if (msg.author.id == 505682488694145035):
-                        bbq+=1
-                    if (msg.author.id == 513429177433849867):
-                        youyou+=1
-                if (bbq >= 3 and youyou >= 3):
-                    print("Vos gueules")
-                    Cooldown = 50
-                    await message.channel.send("https://tenor.com/view/jdg-harry-potter-albus-humblebundledor-humblebundledor-shut-up-gif-17560366")
-            elif (Cooldown > 0):
-                Cooldown -=1
 discordclient.run(os.environ.get('token'))
