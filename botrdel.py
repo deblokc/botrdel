@@ -114,7 +114,7 @@ async def on_message(message): #quand un message est envoyé
             response = "<@" + str(message.author.id) + "> a tiré sur " + message.content[4:] + l[randint(0, len(l) - 1)]
             await message.channel.send(response)
         else:
-            ret = school_API(ret)
+            ret = school_API(message)
             if ret:
                 await message.channel.send(ret)
             ret = Check_msg(message)
