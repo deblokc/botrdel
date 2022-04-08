@@ -89,7 +89,7 @@ def school_API(message):
 def Check_msg(message):
     ret = ""
     if ("SOCIETE" in message.content.upper() or "SOCIÉTÉ" in message.content.upper()):
-        ret += "sossiété\n"
+        ret += "saussiéter\n"
     if "MILLION" in message.content.upper():
         print("MILLION")
         ret += "https://media1.tenor.com/images/e8fbc4408c8cbf27494788ee6ac08229/tenor.gif?itemid=24504749\n"
