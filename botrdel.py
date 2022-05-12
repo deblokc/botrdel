@@ -83,7 +83,7 @@ def school_API(message):
         if ret:
             return ret
         else:
-            return "Il n'y a personne ! trop trop Sadge !"
+            return "Il n'y a personne ! trop trop Sadge ! :sadge:"
         return ret
 
 def Check_msg(message):
