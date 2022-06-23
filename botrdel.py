@@ -107,7 +107,7 @@ def Check_msg(message):
             ret += "feur\n"
     if "BITE" in message.content.upper():
         print("BITE")
-        bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?"] #Liste des réponses à bite
+        bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?", "Chibre"] #Liste des réponses à bite
         ret += bite[randint(0, len(bite) - 1)] + '\n'
     if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
         response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
