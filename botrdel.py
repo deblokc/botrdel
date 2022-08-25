@@ -105,6 +105,10 @@ def Check_msg(message):
         if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
             print("feur")
             ret += "feur\n"
+    if "42" in message.content.upper():
+        print("42")
+        wtf = ["42?", "Oh comme l'École", "Wtf tu connais l'École?!", "Oh 42 j'ai la ref", "42? 42? Comme l'École ?"]
+        ret += wtf[randint(0, len(wtf) - 1)] + '\n'
     if "BITE" in message.content.upper():
         print("BITE")
         bite = ["Bit", "Bite", "Shit", "Zizi", "Pipi", "Oui ?", "Chibre"] #Liste des réponses à bite
