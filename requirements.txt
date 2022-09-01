@@ -14,8 +14,6 @@ pyrsistent
 python-dateutil
 python-dotenv
 pytz
-pywinpty
-pyzmq
 requests
 Send2Trash
 requests_oauthlib
