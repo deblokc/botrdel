@@ -105,8 +105,8 @@ def Check_msg(message):
         if (quoi[qlen-4] == "Q" and (quoi[qlen-3]) == "U" and (quoi[qlen-2]) == "O" and (quoi[qlen-1]) == "I"):
             print("feur")
             ret += "feur\n"
-    if "42" in message.content.upper() and not "689429696093356054" in message.content.upper():
-        print("42")
+    if re.search('(^|([^0-9]+))42(([^0-9]+)|$)', message.content.upper()) != None:
+        print(message.content.upper())
         wtf = ["42?", "Oh comme l'École", "Wtf tu connais l'École?!", "Oh 42 j'ai la ref", "42? 42? Comme l'École ?", "Oh 42 comme l'École mieux qu'Epitech ?"]
         ret += wtf[randint(0, len(wtf) - 1)] + '\n'
     if "BITE" in message.content.upper():
