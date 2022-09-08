@@ -73,7 +73,7 @@ def school_API(message):
         client = BackendApplicationClient(client_id=client_id)
         api = OAuth2Session(client=client)
         api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
-        tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha')
+        tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha,nsartral')
         decode = json.loads(tmp.content.decode('utf-8'))
         i = 0;
         while (i < len(decode)):
