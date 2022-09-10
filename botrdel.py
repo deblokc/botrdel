@@ -115,7 +115,9 @@ def Check_msg(message):
         ret += bite[randint(0, len(bite) - 1)] + '\n'
     if "ZIZI CACA" in message.content.upper(): #on vérifie que le bot à été ping
         print(len(liste))
-        response = liste[randint(0,len(liste)-1)] #on prend une réponse au hasard dans la liste
+        a = randint(0,len(liste)-1)
+        print(a)
+        response = liste[a] #on prend une réponse au hasard dans la liste
         print(response)
         ret += response + '\n' #on répond
     return ret
