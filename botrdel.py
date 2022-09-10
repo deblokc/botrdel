@@ -44,6 +44,7 @@ async def on_ready():
     async for texte in channel.history(limit=1000):
         if texte.author != discordclient.user:
             liste.append(texte.content) #on ajoute les messages à la liste
+    print(liste[105))
 
  # on lance le bot
 @discordclient.event
