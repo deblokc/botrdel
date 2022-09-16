@@ -29,6 +29,12 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 discordclient = discord.Client(intents=intents)
 liste = []
+filechaine = open('chaine_de_mot_bordel', 'r')
+wordfromf = filechaine.readline()
+while wordfromf:
+    liste.append(wordfromf)
+    wordfromf = filechaine.readline()
+filechaine.close()
 
 @discordclient.event
 async def on_ready():
@@ -40,10 +46,6 @@ async def on_ready():
         f'{discordclient.user} is connected to the following guild:\n'
         f'{guild.name}(id: {guild.id})'
     )
-    channel = discord.utils.get(discordclient.get_all_channels(), guild__name='Le Bordel', name='chaine-de-mot') #on sélectionne le channel dans lequel on va prendre les messages, penser à pas modifier le salon (modo)
-    async for texte in channel.history(limit=1000):
-        if texte.author != discordclient.user:
-            liste.append(texte.content) #on ajoute les messages à la liste
 
  # on lance le bot
 @discordclient.event
