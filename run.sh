@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec sleep infinity
+exec python3 /botrdel/botrdel.py
