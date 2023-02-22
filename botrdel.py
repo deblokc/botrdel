@@ -16,7 +16,7 @@ import re
 # on importe tout le nécessaire
 
 intents = discord.Intents.default()
-intents.members = True 
+intents.members = True
 client_id=os.environ.get('client_UID')
 client_secret=os.environ.get('SECRET')
 DISCORD_TOKEN={os.environ.get('token')}
@@ -29,7 +29,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 discordclient = discord.Client(intents=intents)
 liste = []
-filechaine = open('chaine_de_mot_bordel', 'r')
+filechaine = open('/botrdel/chaine_de_mot_bordel', 'r')
 wordfromf = filechaine.readline()
 while wordfromf:
     liste.append(wordfromf)
@@ -75,7 +75,7 @@ def school_API(message):
         client = BackendApplicationClient(client_id=client_id)
         api = OAuth2Session(client=client)
         api_token = api.fetch_token(token_url='https://api.intra.42.fr/oauth/token', client_id=client_id, client_secret=client_secret)
-        tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha,nsartral')
+        tmp = api.get('https://api.intra.42.fr/v2/users?filter[login]=tnaton,bdetune,ghanquer,nflan,madelaha')
         decode = json.loads(tmp.content.decode('utf-8'))
         i = 0;
         while (i < len(decode)):
@@ -122,7 +122,7 @@ def Check_msg(message):
     return ret
 
 @discordclient.event
-async def on_message(message): #quand un message est envoyé 
+async def on_message(message): #quand un message est envoyé
     if message.author != discordclient.user: #on vérifie que ce n'est pas un message du bot*
         if len(message.content) > 4 and message.content[1:4] == "an " and (message.content[0] == 'P' or message.content[0] == 'p'):
             for mention in message.mentions:

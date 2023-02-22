@@ -2,13 +2,7 @@ FROM debian:buster
 
 RUN apt update;
 
-RUN apt install -y git
-
-RUN apt install -y python3
-
-RUN apt install -y python3-pip
-
-RUN apt install -y libffi-dev
+RUN apt install -y git python3 python3-pip libffi-dev
 
 RUN mkdir -p /botrdel
 

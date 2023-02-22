@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  botrdel:
+    build: "./"
+    container_name: "botrdel"
+    image: botrdel:botrdel
+    restart: always
+    env_file:
+      .env
