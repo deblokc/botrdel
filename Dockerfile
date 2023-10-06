@@ -11,6 +11,7 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
 COPY run.sh /tmp/run.sh
+RUN chmod 777 /tmp/run.sh
 COPY botrdel.py /botrdel/botrdel.py
 COPY chaine_de_mot_bordel /botrdel/chaine_de_mot_bordel
 
