@@ -1,21 +1,10 @@
 
 discord.py==1.5.0
 gTTS
-ipython
-ipython-genutils
-ipywidgets
-pandas
-pandocfilters
 Pygments
 PyJWT
-PyNaCl
-pyparsing
-pyrsistent
-python-dateutil
 python-dotenv
-pytz
 requests
-Send2Trash
 requests_oauthlib
 oauthlib
 pygments
